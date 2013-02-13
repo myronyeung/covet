@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Covet. Skinning the web, one platform at a time.</title>
+		
+		<script type="text/javascript">
+			// Detect device and OS.
+			var device = (function() {
+				var userAgent = navigator.userAgent,
+					name = "",
+					OS = 0,
+					maxScreen = 0,
+					resolution = 0,
+					isMobile = 0;
+				
+				if(userAgent.match(/iPhone;/i)) {
+					name = "iPhone";
+				} else if(userAgent.match(/iPad;/i)) {
+					name = "iPad";
+				} else if(userAgent.match(/iPod;/i)) {
+					name = "iPod";
+				} else if(userAgent.match(/Android/i)) {
+					name = "android";
+				} else {
+					name = "";
+				}
+				
+				return {
+					"name": name,
+					"OS": OS,
+					"maxScreen": maxScreen,
+					"resolution": resolution,
+					"isMobile": isMobile
+				}
+			})();
+			
+			// Adjust meta and add device-specific css if necessary.
+			if(device.name === "iPhone" || device.name === "iPad" || device.name === "iPod") {
+				document.getElementsByTagName("head")[0].innerHTML += "<meta name='apple-mobile-web-app-capable' content='yes'>" + 
+						"<meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'>" + 
+						"<meta name='viewport' content='initial-scale=1.0, user-scalable=no, width=device-width'>" + 
+						"<link rel='stylesheet' href='covet-ios.css' type='text/css' />";
+					}
+			 
+			// Add device and OS class to BODY if necessary.
+			if (document.addEventListener) {
+				document.addEventListener("DOMContentLoaded", function() {
+					document.getElementsByTagName("body")[0].className += device.name;
+				}, false);
+			}
+		</script>
+		
+		<link rel="stylesheet" href="covet-base.css" type="text/css" />
+	</head>
+	<body>
+		<div class="portal">
+			<div class="carousel">
+			<section class="level1 previous">
+				<header>
+					<h1>Covet</h1>
+				</header>
+				<div class="section-body">
+					<p>Hello from the first level. blah blah blah blah.</p>
+				</div>
+			</section>
+			<section class="level2 active">
+				<header>
+					<h2>Covet Section 2</h2>
+				</header>
+				<div class="section-body">
+					<p>Hello from the second level</p>
+				</div>
+			</section>
+			<section class="level3 next">
+				<header>
+					<h2>Covet Section 3</h2>
+				</header>
+				<div class="section-body">
+					<p>Hello from the third level</p>
+				</div>
+			</section>
+			<section class="level2">
+				<header>
+					<h2>Covet Section 2</h2>
+				</header>
+				<div class="section-body">
+					<p>Hello from the second, second level</p>
+				</div>
+			</section>
+			</div>
+		</div>
+		<h2>touchMovez at: <span id="touchMoveCoordinates"></span></h2>
+		
+		<script type="text/javascript">
+			// Detect features and load covet.js if appropriate
+		</script>
+	
+		<script type="text/javascript">
+			"use strict";
+			
+			var startX = 0;
+			var touchMoveCoordinates = document.getElementById("touchMoveCoordinates");
+			document.addEventListener("touchstart", touchStart, false);
+			document.addEventListener("touchend", touchEnd, false);
+			document.addEventListener("touchmove", touchMove, false);
+			function touchStart(event) {
+				startX = event.changedTouches.item(0).pageX;
+			}
+			function touchEnd(event) {
+				if(event.changedTouches.item(0).pageX > startX) {
+					event.preventDefault();
+				}
+				startX = 0;
+			}
+			function touchMove(event) {
+				touchMoveCoordinates.innerHTML = "(" + event.touches[0].clientX + 
+				", " + event.changedTouches.item(0).clientY + ")";
+			}
+		</script>
+	</body>
+</html>

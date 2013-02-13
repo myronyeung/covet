@@ -1,0 +1,29 @@
+v0.0.1:
+Correct Meta for iOS and Android
+Dynamic CSS link
+iOS6 Header
+iOS6 Normal text
+Do not remove elastic scrolling. Want to be able to scroll down if there is a lot of content. Look at iOS Settings, it elastically scrolls!
+
+v0.0.2:
+
+Notes:
+Invariants: Sections must be given a class of levelN. Sections cannot mutate based on user interaction.
+
+
+References:
+iOS:
+iOS Human Interface Guidelines: https://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/MobileHIG/UIElementGuidelines/UIElementGuidelines.html#//apple_ref/doc/uid/TP40006556-CH13-SW1 (good place to learn about iOS UI elements)
+
+iOS Web Content Guide: http://developer.apple.com/library/ios/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html
+iOS Events: http://developer.apple.com/library/ios/#documentation/AppleApplications/Reference/SafariWebContent/HandlingEvents/HandlingEvents.html
+
+
+Android:
+Android Input Controls: http://developer.android.com/guide/topics/ui/controls.html (good place to learn about Android UI elements)
+
+Spacing and dimension info: http://developer.android.com/design/style/metrics-grids.html
+
+All:
+Explanation of 	meta tags: http://speckyboy.com/2012/05/16/creating-a-mobile-web-application-with-meta-tags/
+

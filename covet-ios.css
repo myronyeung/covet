@@ -1,0 +1,67 @@
+div.portal {
+	overflow-x: hidden;
+}
+/*
+body section {
+	position: absolute;
+	top: 0;
+	z-index: 0;
+	background-color: #fff;
+}
+body section.active {
+	left: 0;
+	z-index: 1;
+}*/
+@media only screen and (device-width: 320px) {
+	div.portal {
+		width: 320px;
+	}
+	div.carousel {
+		width: 960px;
+		color: teal;
+	}
+	body section {
+		position: relative;
+		float: left;
+		width: 320px;
+	}
+	/*
+	body section.previous {
+		left: -320px;
+	}
+	body section.next {
+		left: 320px;
+	}*/
+}
+
+@media only screen and (device-width: 480px) {
+	body > div {
+		width: 480px;
+		color: purple;
+	}
+	body section {
+		width: 480px;
+	}
+	body section.previous {
+		left: -480px;
+	}
+	body section.next {
+		left: 480px;
+	}
+}
+
+@media only screen and (min-device-width: 640px) and (max-device-width: 1136px) {
+	body > div {
+		width: 568px;
+		color: brown;
+	}
+	body section {
+		width: 568px;
+	}
+	body section.previous {
+		left: -568px;
+	}
+	body section.next {
+		left: 568px;
+	}
+}

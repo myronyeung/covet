@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Covet. Skinning the web, one platform at a time.</title>
+		<style type="text/css">
+			.iPhone h1:after {
+				content: " (iPhone styling applied)";
+			}
+			.iPad h1:after {
+				content: " (iPad styling applied)";
+			}
+			.iPod h1:after {
+				content: " (iPod styling applied)";
+			}
+			.android h1:after {
+				content: " (android styling applied)";
+			}
+			h1:after {
+				content: " (unrecognized device)";
+			}
+		</style>
+		
+		<script type="text/javascript">
+			// Detect device and OS.
+			var device = (function() {
+				var userAgent = navigator.userAgent,
+					name = "",
+					OS = 0,
+					maxScreen = 0,
+					resolution = 0,
+					isMobile = 0;
+				
+				if(userAgent.match(/iPhone;/i)) {
+					name = "iPhone";
+				} else if(userAgent.match(/iPad;/i)) {
+					name = "iPad";
+				} else if(userAgent.match(/iPod;/i)) {
+					name = "iPod";
+				} else if(userAgent.match(/Android/i)) {
+					name = "android";
+				} else {
+					name = "";
+				}
+				
+				return {
+					"name": name,
+					"OS": OS,
+					"maxScreen": maxScreen,
+					"resolution": resolution,
+					"isMobile": isMobile
+				}
+			})();
+			
+			// Adjust meta if necessary.
+			if(device.name === "iPhone") {
+				document.getElementsByTagName("head")[0].innerHTML += "<meta name='apple-mobile-web-app-capable' content='yes'>" + 
+						"<meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'>" + 
+						"<meta name='viewport' content='initial-scale=1.0; maximum-scale=1.0; user-scalable=no'>";
+					}
+			 
+			// Add device and OS class to BODY if necessary.
+			if (document.addEventListener) {
+				document.addEventListener("DOMContentLoaded", function() {
+					document.getElementsByTagName("body")[0].className += device.name;
+				}, false);
+			}
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1>Covet</h1>
+		</header>
+		<h2>This device:</h2>
+		<dl class="deviceInfo">
+			<dt>Is mobile?</dt>
+			<dd></dd>
+			<dt>Device</dt>
+			<dd></dd>
+			<dt>OS</dt>
+			<dd></dd>
+			<dt>Max Screen Size</dt>
+			<dd></dd>
+			<dt>Resolution</dt>
+			<dd></dd>
+			<dt></dt>
+			<dd></dd>
+			<dt></dt>
+			<dd></dd>
+		</dl>
+		<h2>navigator object:</h2>
+		<dl class="navigatorInfo"></dl>
+		
+		
+		<script type="text/javascript">
+			// Detect features and load covet.js if appropriate
+		</script>
+	
+		<script type="text/javascript">		
+			(function() {
+				"use strict";
+				var deviceInfo = document.querySelector(".deviceInfo");
+				var navigatorInfo = document.querySelector(".navigatorInfo");
+				
+				navigatorInfo.innerHTML = "<dt>appName</dt><dd>" + navigator.appName + "</dd>" +
+						"<dt>appVersion</dt><dd>" + navigator.appVersion + "</dd>" +
+						"<dt>platform</dt><dd>" + navigator.platform + "</dd>" +
+						"<dt>userAgent</dt><dd>" + navigator.userAgent + "</dd>";
+			})();
+
+			alert("window.navigator.standalone = " + window.navigator.standalone);
+		</script>
+	</body>
+</html>

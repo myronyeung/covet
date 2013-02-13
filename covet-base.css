@@ -1,0 +1,6 @@
+html, body {
+	height: 100%;
+}
+body, div, section, header, h1, h2, h3 {
+	margin: 0;
+}
